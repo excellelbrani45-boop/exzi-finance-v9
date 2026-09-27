@@ -1,1 +1,1 @@
-Put the Google Service Account JSON here for local use, or set GOOGLE_SERVICE_ACCOUNT_FILE to another private path. Never commit credential JSON. For hosting, prefer GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 as a secret/environment variable.
+
