@@ -1,0 +1,30 @@
+const assert = require("assert");
+const { cleanAmount, extractAmount, removeAmount } = require("../utils/money");
+const { normalizeOwner, normalizeWallet, normalizeType, normalizeCategory } = require("../utils/constants");
+const { today, month, greeting, clock } = require("../utils/time");
+
+assert.strictEqual(cleanAmount("25k"), 25000);
+assert.strictEqual(cleanAmount("25rb"), 25000);
+assert.strictEqual(cleanAmount("1,5jt"), 1500000);
+assert.strictEqual(cleanAmount("1.5juta"), 1500000);
+assert.strictEqual(cleanAmount("1.500.000"), 1500000);
+assert.strictEqual(cleanAmount("1,500,000"), 1500000);
+assert.strictEqual(cleanAmount("200000"), 200000);
+assert.strictEqual(extractAmount("makan 25k"), 25000);
+assert.strictEqual(extractAmount("gaji 5jt"), 5000000);
+assert.strictEqual(extractAmount("bayar kost 1.500.000"), 1500000);
+assert.strictEqual(removeAmount("makan 25k"), "makan");
+assert.strictEqual(removeAmount("bayar kost 1.500.000"), "bayar kost");
+assert.strictEqual(normalizeOwner("excell"), "EXCELL");
+assert.strictEqual(normalizeOwner("zizi"), "ZIZI");
+assert.strictEqual(normalizeWallet("shop ee pay"), "SHOPEEPAY");
+assert.strictEqual(normalizeWallet("unknown"), null);
+assert.strictEqual(normalizeType("pengeluaran"), "PENGELUARAN");
+assert.strictEqual(normalizeCategory("kesehatan"), "Kesehatan");
+assert.strictEqual(normalizeCategory("kerja"), "Kerja");
+assert.match(today(), /^\d{4}-\d{2}-\d{2}$/);
+assert.match(month(), /^\d{4}-\d{2}$/);
+assert.match(clock(), /^\d{2}:\d{2}$/);
+assert.ok(typeof greeting() === "string" && greeting().length > 0);
+
+console.log("V9 self-test passed.");
