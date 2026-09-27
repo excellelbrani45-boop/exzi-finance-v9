@@ -6,3 +6,13 @@ logs/
 *.log
 npm-debug.log*
 credentials/*.json
+
+# Google Service Account credentials
+*service-account*.json
+*credentials*.json
+exzi-finance-509812-*.json
+
+# Google credentials
+exzi-finance-509812-6d7a0f4d2fd4.json
+*.service-account.json
+.env
